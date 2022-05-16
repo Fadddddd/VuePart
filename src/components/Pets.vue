@@ -1,8 +1,8 @@
 <template>
-  <div class="pets">
-    <div v-for="pet in pets" :key="pet.id">
+  <div class="grid">
+    <div class="col-12 md:col-6 lg:col-3" v-for="pet in pets" :key="pet.id">
       <!-- <h3>{{ pet.name }}</h3> -->
-      <Pet :pet="pet"/>
+      <Pet :pet="pet" />
     </div>
   </div>
 </template>
