@@ -1,13 +1,15 @@
 <template>
-  <div class="home"></div>
+  <!-- <div class="home"></div> -->
+  <AddPet />
   <Pets :pets="pets" />
 </template>
 
 <script>
 import Pets from "../components/Pets";
+import AddPet from "../components/AddPet.vue";
 export default {
   name: "HomeView",
-  components: { Pets },
+  components: { Pets, AddPet },
   data() {
     return {
       pets: [

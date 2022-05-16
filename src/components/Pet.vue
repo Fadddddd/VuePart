@@ -19,15 +19,19 @@
       </template> -->
       <template #footer>
         <Button
+          @click="onDelete(pet.id)"
           icon="pi pi-times"
           label="Delete"
           class="p-button-danger"
           style="margin-right: 4em"
         />
-        <Button icon="pi pi-heart" class="p-button-rounded p-button-danger" />
         <Button
           icon="pi pi-heart"
-          class="p-button-rounded p-button-danger p-button-outlined"
+          :class="[
+            pet.isFavorite ? '' : 'p-button-outlined',
+            'p-button-rounded',
+            'p-button-danger',
+          ]"
         />
       </template>
     </Card>
@@ -38,6 +42,12 @@
 export default {
   props: {
     pet: Object,
+  },
+  components: {},
+  methods: {
+    onDelete(id) {
+      console.log("clicked", id);
+    },
   },
 };
 </script>
