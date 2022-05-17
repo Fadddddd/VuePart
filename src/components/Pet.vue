@@ -2,11 +2,7 @@
   <div class="pet">
     <!-- <h3>{{ pet.name }}</h3> -->
     <Card>
-      <template #header>
-        <img
-          src="https://www.primefaces.org/wp-content/uploads/2020/02/primefacesorg-primevue-2020.png"
-        />
-      </template>
+      <template #header> <img :src="pet.url" alt="Pet" /> </template>
       <template #title> {{ pet.name }} </template>
       <template #subtitle> Age: {{ pet.age }} </template>
       <!-- <template #content>
@@ -26,6 +22,7 @@
           style="margin-right: 4em"
         />
         <Button
+          @click="$emit('add-favorite', pet.id)"
           icon="pi pi-heart"
           :class="[
             pet.isFavorite ? '' : 'p-button-outlined',
@@ -47,10 +44,15 @@ export default {
   methods: {
     onDelete(id) {
       //console.log("clicked", id);
-      this.$emit('delete-pet', id)
+      this.$emit("delete-pet", id);
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+img {
+  height: 250px;
+  object-fit: cover;
+}
+</style>
