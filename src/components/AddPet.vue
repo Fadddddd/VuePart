@@ -45,17 +45,17 @@ export default {
       name: "",
       age: "",
       url: "",
-      isFavorite: false,
     };
   },
   methods: {
     onSubmit(e) {
       e.preventDefault();
       const newPet = {
-        id: Math.random(),
+        //id: Math.random(),
         name: this.name,
         age: this.age,
         url: this.url,
+        isFavorite: false,
       };
       //   console.log("new pet", newPet);
       this.$emit("add-pet", newPet);
