@@ -47,10 +47,32 @@ export default {
           : alert("Deleting has failed!");
       }
     },
-    addFavorite(id) {
-      console.log("Home Favorite", id);
+    // addFavorite(id) {
+    //   console.log("Home Favorite", id);
+    //   this.pets = this.pets.map((pet) =>
+    //     pet.id === id ? { ...pet, isFavorite: !pet.isFavorite } : pet
+    //   );
+    // },
+    async addFavorite(id) {
+      const addFavorite = await this.fetchPet(id);
+      const updatedFavorite = {
+        ...addFavorite,
+        isFavorite: !addFavorite.isFavorite,
+      };
+      const res = await fetch(
+        `https://628372e292a6a5e462240cc5.mockapi.io/pets/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(updatedFavorite),
+        }
+      );
+
+      const data = await res.json();
       this.pets = this.pets.map((pet) =>
-        pet.id === id ? { ...pet, isFavorite: !pet.isFavorite } : pet
+        pet.id === id ? { ...pet, isFavorite: data.isFavorite } : pet
       );
     },
     async fetchPets() {
