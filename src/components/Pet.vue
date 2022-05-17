@@ -46,7 +46,8 @@ export default {
   components: {},
   methods: {
     onDelete(id) {
-      console.log("clicked", id);
+      //console.log("clicked", id);
+      this.$emit('delete-pet', id)
     },
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <!-- <div class="home"></div> -->
   <AddPet />
-  <Pets :pets="pets" />
+  <Pets @delete-pet="deletePet" :pets="pets" />
 </template>
 
 <script>
@@ -10,6 +10,14 @@ import AddPet from "../components/AddPet.vue";
 export default {
   name: "HomeView",
   components: { Pets, AddPet },
+  methods: {
+    deletePet(id) {
+      // console.log("Home", id);
+      if (confirm("Are you sure?")) {
+        this.pets = this.pets.filter((pet) => pet.id !== id);
+      }
+    },
+  },
   data() {
     return {
       pets: [
